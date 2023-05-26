@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Body styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Contact styles */
+    #contact {
+      background-color: #f2f2f2;
+      padding: 40px 0;
+    }
+    
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .contact-left {
+      flex-basis: 50%;
+    }
+    
+    .contact-left h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .contact-left p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+    .social-icons {
+      margin-top: 20px;
+    }
+    
+    .social-icons a {
+      color: #333;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+    
+    .contact-right {
+      flex-basis: 50%;
+    }
+    
+    #contact-form input,
+    #contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+    }
+    
+    #contact-form textarea {
+      resize: vertical;
+    }
+    
+    .btn {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+    
+    /* Tab styles */
+    .tab {
+      margin-top: 20px;
+    }
+    
+    .tab a {
+      display: inline-block;
+      margin-right: 10px;
+      cursor: pointer;
+      color: #333;
+      text-decoration: none;
+    }
+    
+    .tab a:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="contact-left">
+          <h1 class="sub-title">Contact Me</h1>
+          <p>fninomiguel@gmail.com</p>
+          <p>09957166562</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/ninomiguel.fetalvero/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/hey_meegle/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.google.com/maps/place/8771+Ejercito+Ave,+Pasig,+1920+Metro+Manila/@14.5436237,121.104392,17z/data=!3m1!4b1!4m5!3m4!1s0x3397c64922a9391b:0xf639aa59d62cafc!8m2!3d14.5436237!4d121.1065807" target="_blank"><i class="fas fa-map"></i></a>
+          </div>
+        </div>
+        <div class="contact-right">
+          <div class="tab">
+		  	<a href="E-commerce index.html">Sign up</a>
+            <a href="E-commerce Home index.html">Home</a>
+            <a href="E-commerce Products index.html">Products</a>
+            <a href="E-commerce Contact Index.html">Contact</a>
+          </div>
+          <div id="tab1" class="tab-contents active-tab">
+            <form id="contact-form" onsubmit="return confirm('Are you sure you want to submit the form?');">
+              <input type="text" name="Name" placeholder="Your Name" required>
+              <input type="email" name="email" placeholder="Your Email" required>
+              <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+              <button type="submit" class="btn">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname) {
+      for (tablink of tablinks) {
+        tablink.classList.remove("active-link");
+      }
+      for (tabcontent of tabcontents) {
+        tabcontent.classList.remove("active-tab");
+      }
+      event.currentTarget.classList.add("active-link");
+      document.getElementById(tabname).classList.add("active-tab");
+    }
+  </script>
+</body>
+</html>

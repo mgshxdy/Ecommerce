@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-commerce Website - Products</title>
+  <style>
+    /* Body styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5; /* Add your desired background color here */
+    }
+    
+    /* Header styles */
+    header {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    /* Navigation styles */
+    nav {
+      background-color: red;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 10px;
+    }
+    
+    /* Section styles */
+    section {
+      padding: 20px;
+      margin: 20px;
+    }
+    
+    /* Products section styles */
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .product-item {
+      flex-basis: calc(33.33% - 20px);
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    
+    .product-item img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+    }
+    
+    .product-item h3 {
+      margin-top: 10px;
+    }
+    
+    .product-item p {
+      color: #888;
+    }
+    
+    /* Cart section styles */
+    .cart-container {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+    
+    .cart-item p {
+      margin: 0;
+    }
+    
+    .cart-summary {
+      text-align: right;
+    }
+    
+    .cart-summary p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>E-commerce Website</h1>
+  </header>
+  
+  <nav>
+	<a href="E-commerce index.html">Sign up</a>
+    <a href="E-commerce Home index.html">Home</a>
+    <a href="E-commerce Products index.html">Products</a>
+    <a href="E-commerce Contact Index.html">Contact</a>
+  </nav>
+  
+  <section>
+    <h2>Products</h2>
+    <div class="product-container">
+      <div class="product-item">
+        <img src="https://static.nike.com/a/images/t_default/b5dc02d8-ee36-4cd2-9dc8-ffbe4667a727/jordan-jumpman-washed-bucket-hat-kblNWN.png" alt="Product Image">
+        <h3>Jordan Jumpman Hat</h3>
+        <p>Price: ₱3000.99</p>
+        <button onclick="addToCart('Jordan Jumpman Hat', 3000.99)">Add to Cart</button>
+      </div>
+      <div class="product-item">
+        <img src="https://i0.wp.com/cuttongarments.com/wp-content/uploads/2017/10/red-copy.png?fit=1120%2C1494&ssl=1" alt="Product Image">
+        <h3>Polo Shirt</h3>
+        <p>Price: ₱1900.99</p>
+        <button onclick="addToCart('Polo Shirt', 1900.99)">Add to Cart</button>
+      </div>
+      <div class="product-item">
+        <img src="https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/425770/item/goods_32_425770.jpg?width=750" alt="Product Image">
+        <h3>AIRism Jersey Short Sleeve Polo Shirt</h3>
+        <p>Price: ₱29.99</p>
+        <button onclick="addToCart('AIRism Jersey Short Sleeve Polo Shirt', 29.99)">Add to Cart</button>
+      </div>
+    </div>
+    
+    <div class="cart-container">
+      <h2>Cart</h2>
+      <div id="cart-items"></div>
+      <div class="cart-summary">
+        <p>Total Items: <span id="total-items">0</span></p>
+        <p>Total Price: ₱<span id="total-price">0</span></p>
+        <button onclick="buy()">Buy</button>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    var cartItems = [];
+    var totalPrice = 0;
+    
+    function addToCart(productName, price) {
+      cartItems.push(productName);
+      totalPrice += price;
+      
+      var cartItemsElement = document.getElementById('cart-items');
+      var newItem = document.createElement('div');
+      newItem.className = 'cart-item';
+      newItem.innerHTML = `
+        <img src="path/to/your/image.jpg" alt="Product Image">
+        <p>${productName}</p>
+      `;
+      cartItemsElement.appendChild(newItem);
+      
+      updateCartSummary();
+    }
+    
+    function updateCartSummary() {
+      var totalItemsElement = document.getElementById('total-items');
+      var totalItems = cartItems.length;
+      totalItemsElement.textContent = totalItems;
+      
+      var totalPriceElement = document.getElementById('total-price');
+      totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+    
+    function buy() {
+      if (cartItems.length > 0) {
+        var confirmation = confirm("Thank you for purchasing! Your order will be processed.");
+        if (confirmation) {
+          cartItems = [];
+          totalPrice = 0;
+          var cartItemsElement = document.getElementById('cart-items');
+          cartItemsElement.innerHTML = '';
+          updateCartSummary();
+        }
+      } else {
+        alert("Your cart is empty. Please add items to your cart before purchasing.");
+      }
+    }
+  </script>
+</body>
+</html>
